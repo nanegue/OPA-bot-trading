@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    image: nadege2005/opa-streaming-data:v1
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+    env_file: 
+      - .monenv
+    command: ["python", "etl_data_streaming.py"]
