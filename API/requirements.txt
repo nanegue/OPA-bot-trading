@@ -1,0 +1,9 @@
+fastapi==0.111.0
+joblib==1.4.2
+pandas==2.0.3
+psycopg2-binary==2.9.9
+pydantic==2.7.1
+uvicorn==0.29.0
+SQLAlchemy==2.0.29
+datetime
+mlflow==2.13.0
