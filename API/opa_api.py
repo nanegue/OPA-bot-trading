@@ -43,7 +43,7 @@ tickers = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT", "XRPUSDT"]
 user = os.getenv("DB_USER")
 password = os.getenv("DB_PASSWORD")
 adress = os.getenv("DB_ADRESS")
-conn_string = f'postgresql://{user}:{password}@{adress}:5432/klines'
+conn_string = f'postgresql://{user}:{password}@{adress}:5432/opadb'
 engine = create_engine(conn_string) # Connexion avec sqlalchemy
 
 # Création des routes
@@ -59,7 +59,7 @@ def get_kline_info(crypto_currency: str = Header(None, description='symbol of cr
     """
     Select and display informations for a cryptocurrency klines on a day
     Enter a symbol for cryptocurrencies between the following : BTCUSDT, ETHUSDT , BNBUSDT, SOLUSDT, XRPUSDT
-    Enter the day in the format : 'YYYY-MM-DD' example 2027-08-17
+    Enter the day in the format : 'YYYY-MM-DD' example 2023-08-17
     """
         #query to select klines for cryptocurrency  on day given in paramters
     query = "SELECT Timestamp, Open, High, Low, Close, Volume, Trades FROM historical_klines where symbol = '"+ crypto_currency+"' and TO_CHAR(timestamp, 'YYYY-MM-DD')= '"+ the_day +"' ORDER BY timestamp ASC"
