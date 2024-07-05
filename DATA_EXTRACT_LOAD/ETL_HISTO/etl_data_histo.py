@@ -18,9 +18,6 @@ from pprint import pprint
 KEY = os.environ["API_KEY"]
 SECRET = os.environ["SECRET_KEY"]
 
-#KEY = "KFYqLb7XCciHKuNIRwoqwNVDSGN2dI0c1mULaIX6NFkWQeKgTtg4IXxfF3Qkec3Q"
-#SECRET = "LFmhU6SrboucbF8beRlBToUNSPEWEuCDR1IAmivZl3Znyt1n684QQKE6k7CbMWbM"
-
 # création de client
 client = Client(api_key=KEY, api_secret=SECRET)
 
@@ -34,16 +31,6 @@ data = [ "btc","eth", "bnb","sol", "xrp"]  #
 for i, ticker in enumerate(tickers):
   timestamp = client._get_earliest_valid_timestamp(ticker, '1h')
   data[i] = client.get_historical_klines(ticker, "1h", timestamp)
-
-"""
-!pip install ipython-sql
-!pip install sqlalchemy
-#!pip install psycopg2    # ne fonctionne pas sur jupiter
-!pip install psycopg2-binary   # fonctionne bien sur jupiter
-%pip install websocket-client
-"""
-
-
 
 # IMPORT DES DONNEES HISTORIQUES DANS LA BASE DE DONNEES
 
