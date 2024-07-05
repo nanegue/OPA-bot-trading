@@ -36,7 +36,11 @@ for i, ticker in enumerate(tickers):
 
 # connection au serveur de base de donnee Posgresql sur le cloud 
 import psycopg2 
-conn_string = 'postgresql://opauser:opadatapwd@ec2-16-171-16-2.eu-north-1.compute.amazonaws.com:5432/opadb'
+user = os.getenv("DB_USER")
+password = os.getenv("DB_PASSWORD")
+adress = os.getenv("DB_ADRESS")
+conn_string = f"postgresql://{user}:{password}@{adress}:5432/opadb"
+
 print (' connexion à la base de donnees')
 # Connexion avec psycopg2
 conn = psycopg2.connect(conn_string) 
